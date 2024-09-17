@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Messages from './Messages'
+import SendMessage from './SendMessage'
 
 
 const MessageBox = () => {
@@ -9,6 +10,7 @@ const MessageBox = () => {
       <Header/>
       <div className='my-0 py-0 h-[1px] px-2  m-2 rounded-md' style={{backgroundColor: "#ffffff"}}></div>
       <Messages/>
+      <SendMessage/>
       </div>
   )
 }

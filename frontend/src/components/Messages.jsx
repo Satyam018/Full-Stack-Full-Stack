@@ -4,7 +4,7 @@ import Receiver from './Receiver'
 
 const Messages = () => {
   return (
-    <div className='h-[411px] overflow-auto background-white-200'>
+    <div className='h-[368px] overflow-auto background-white-200'>
       <Sender/>
       <Receiver/>
       <Sender/>
