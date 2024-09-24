@@ -12,7 +12,7 @@ const login=async (userName,password)=>{
     setLoading(true)
     if(!validateInputs(userName,password))return;
     try{
-        const res=await fetch("http://localhost:5000/api/auth/login",{
+        const res=await fetch("api/auth/login",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({userName,password})
@@ -22,7 +22,7 @@ const login=async (userName,password)=>{
         if(data.error){
             throw new Error(data.error);
         }
-        localStorage.setItem("chat-app",JSON.stringify(data))
+        localStorage.setItem("chat-user",JSON.stringify(data))
         setAuthUser(data);
 
     }catch(err){
