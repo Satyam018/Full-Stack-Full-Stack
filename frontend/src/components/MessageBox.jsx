@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Header from './Header'
 import Messages from './Messages'
 import SendMessage from './SendMessage'
-import WelcomeMessage from '../../components/WelcomeMessage'
+import WelcomeMessage from '../components/WelcomeMessage'
 import useConversation from '../zustang/useConversation'
 
 

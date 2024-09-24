@@ -12,7 +12,7 @@ const login=async (username,password)=>{
     setLoading(true)
     if(!validateInputs(username,password))return;
     try{
-        const res=await fetch("url",{
+        const res=await fetch("/login",{
             method:"POST",
             headers:{"content-Type":"application/json"},
             body:JSON.stringify({username,password})

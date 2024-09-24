@@ -4,14 +4,14 @@ import { useAuthContext } from '../src/context/authcontext'
 
 const useSignup = () => {
   const [loading,setLoading]=useState(false)
- const {setauthUser}= useAuthContext()
+ const {setAuthUser}= useAuthContext()
 
   const signup =async({fullName,userName,password,confirmPassword})=>{
         const success=validateInputs(fullName,userName,password,confirmPassword)
         if(!success)return;
         setLoading(true)
         try{
-            const res=await fetch("http:url",{
+            const res=await fetch("http://localhost:5000/api/auth/signup",{
               method:"POST",
               headers:{"content-type":"application/json"},
               body:JSON.stringify({fullName,userName,password,confirmPassword})
@@ -22,15 +22,16 @@ const useSignup = () => {
               throw new Error(data.error)
             }
             localStorage.setItem("chat-user",JSON.stringify(data))
-            setauthUser(data)
+            setAuthUser(data)
             console.log(data)
         }catch(error){
+          console.log(error.message)
           toast.error(error.message)
         }finally{
           setLoading(false)
         }
   }
-  return (loading,signup);
+  return {loading,signup};
 }
 
 export default useSignup

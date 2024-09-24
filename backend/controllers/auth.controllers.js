@@ -5,12 +5,12 @@ import generateTokenAndSetCookie from "../utils/generatetoken.js";
 
 export const signup= async (req,res)=>{
     try{
-        const{fullName,username,passowrd,confirmPassword,gender}=req.body;
-        if(passowrd !== confirmPassword){
+        const{fullName,userName,password,confirmPassword}=req.body;
+        if(password !== confirmPassword){
             return res.status(400).json({error:"Passwords does not match"})
         }
-
-        const user=await User.findOne({username});
+        console.log(userName)
+        const user=await User.findOne({"userName":userName});
 
         if(user){
             return res.status(400).json({error:"Username exits"})
@@ -18,15 +18,16 @@ export const signup= async (req,res)=>{
 
         // Hash password here
         const salt= await bcryptjs.genSalt(10);
-        const hashedPassword=await bcryptjs.hash(passowrd,salt)
+        const hashedPassword=await bcryptjs.hash(password,salt)
 
         // profilepic
-        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
-        const girlProfilePic= `https://avatar.iran.liara.run/public/girl?username=?${username}`
+        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${userName}`
+        const girlProfilePic= `https://avatar.iran.liara.run/public/girl?username=?${userName}`
 
+        const gender="male";
         const newUser=new User({
             fullName,
-            username,
+            userName,
             password:hashedPassword,
             gender,
             profilepic: gender==="male"? boyProfilePic :girlProfilePic
@@ -43,7 +44,7 @@ export const signup= async (req,res)=>{
             res.status(201).json({
             _id:newUser._id,
             fullName:newUser.fullName,
-            username: newUser.username,
+            userName: newUser.userName,
             profilepic: newUser.profilepic
             })
         }else{
