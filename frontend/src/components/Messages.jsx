@@ -1,11 +1,12 @@
 import React from 'react'
-import Sender from './Sender'
-import Receiver from './Receiver'
+import useGetMessages from '../../hooks/useGetMessages'
+import Message from './Message';
 
 const Messages = () => {
+  const {loading,messages}=useGetMessages();
   return (
     <div className='h-[368px] overflow-auto background-white-200'>
-      <Sender/>
+      {/* <Sender/>
       <Receiver/>
       <Sender/>
       <Receiver/>
@@ -15,8 +16,13 @@ const Messages = () => {
       <Sender/>
       <Sender/>
       <Sender/>
-      <Sender/>
-      
+      <Sender/> */}
+      {!loading && messages.length===0 &&(
+        <p className='text-center'>Send a message to start the conversation</p>
+      )}
+      {!loading && messages.length>0 && messages.map((message)=>{
+        <Message key={message._id} message={message}/>
+      })}
     </div>
   )
 }
