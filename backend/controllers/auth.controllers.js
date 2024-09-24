@@ -62,21 +62,22 @@ export const signup= async (req,res)=>{
 export const login= async (req,res)=>{
     
     try{
-        const {username,password}=req.body;
-        const user=await User.findOne({username});
+        const {userName,password}=req.body;
+        const user=await User.findOne({"userName":userName});
+        console.log(userName,password)
         const isPasswordCorrect=await bcryptjs.compare(password,user?.password||"");
-
-        if(!user||isPasswordCorrect){
-            return res.send(400).json({error:"Invalid credentail"})
+        console.log(user,isPasswordCorrect)
+        if(!user||!isPasswordCorrect){
+            return res.status(400).json({error:"Invalid credentail"})
         }
 
         generateTokenAndSetCookie(user._id,res);
 
         res.status(200).json({
-            _id:newUser._id,
-            fullName:newUser.fullName,
-            username: newUser.username,
-            profilepic: newUser.profilepic
+            _id:user._id,
+            fullName:user.fullName,
+            username: user.userName,
+            profilepic: user.profilepic
             });
 
     }catch(error){

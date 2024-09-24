@@ -8,21 +8,21 @@ const useLogin = () => {
 
 const {setAuthUser}=useAuthContext()
 
-const login=async (username,password)=>{
+const login=async (userName,password)=>{
     setLoading(true)
-    if(!validateInputs(username,password))return;
+    if(!validateInputs(userName,password))return;
     try{
-        const res=await fetch("/login",{
+        const res=await fetch("http://localhost:5000/api/auth/login",{
             method:"POST",
-            headers:{"content-Type":"application/json"},
-            body:JSON.stringify({username,password})
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({userName,password})
         })
 
         const data= await res.json();
         if(data.error){
             throw new Error(data.error);
         }
-        localStorage.setItem("chat-app",Json.stringify(data))
+        localStorage.setItem("chat-app",JSON.stringify(data))
         setAuthUser(data);
 
     }catch(err){
