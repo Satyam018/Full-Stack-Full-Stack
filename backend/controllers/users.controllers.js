@@ -1,6 +1,6 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 
-const getUsersProfile =async(req,res)=>{
+export const getUsersProfile =async(req,res)=>{
 
     try{
 
