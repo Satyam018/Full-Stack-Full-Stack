@@ -1,6 +1,7 @@
 import React from 'react'
 import useGetMessages from '../../hooks/useGetMessages'
 import Message from './Message';
+import Sender from './Sender.jsx'
 
 const Messages = () => {
   const {loading,messages}=useGetMessages();
@@ -20,8 +21,12 @@ const Messages = () => {
       {!loading && messages.length===0 &&(
         <p className='text-center'>Send a message to start the conversation</p>
       )}
+    
+      {console.log(messages.length)}
       {!loading && messages.length>0 && messages.map((message)=>{
-        <Message key={message._id} message={message}/>
+        return  <Message key={message._id} message={message}/>
+        console.log(message);
+        // <Sender/>
       })}
     </div>
   )

@@ -10,11 +10,11 @@ import useConversation from '../zustang/useConversation'
 const MessageBox = () => {
   const {selectedConversation,setSelectedConversation}=useConversation();
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    return ()=>setSelectedConversation(null)
+  //   return ()=>setSelectedConversation(null)
 
-  },[selectedConversation])
+  // },[selectedConversation])
   return (
     <div className='ml-2 h-full md:w-[460px] sm:w-[400px] rounded-2xl' style={{background:"#ffd700"}}>
       {/* <Header/>

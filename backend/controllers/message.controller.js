@@ -5,9 +5,9 @@ export const sendMessage= async (req,res)=>{
    try{
         const {message}=req.body;
         const {id:receiverId}=req.params;
-        const {senderId}=req.user._id
-
-        const conversation=await Conversation.findOne({
+        const senderId=req.user._id;
+        console.log('ids',senderId,message);
+        let conversation=await Conversation.findOne({
             participants:{$all:[senderId,receiverId]}
         })
         if(!conversation){
@@ -31,7 +31,7 @@ export const sendMessage= async (req,res)=>{
         await Promise.all([conversation.save(),newMessage.save()])
         res.status(201).json(newMessage);
    }catch(error){
-    console.log("error in sned message")
+    console.log("error in sned message",error.message)
     res.status(500).json({error:"Internal server error"});
    }
 }
@@ -40,18 +40,19 @@ export const getMessage= async(req,res)=>{
     try{
         const {id:userToChartId}=req.params;
         const senderId=req.user._id;
-
-        const conversation=await conversation.findOne({
+            // console.log(senderId,userToChartId)
+        const conversation=await Conversation.findOne({
             participants:{$all:[senderId,userToChartId]}
         }).populate("message");
 
-        if(!conversation){
-            res.status(200).json([]);
+        if(conversation==null){
+           return res.status(200).json([]);
         }
+        console.log('converstion',conversation)
         res.status(200).json(conversation.message)
 
     }catch(error){
-        console.log("error in get message")
+        console.log("error in get message",error.message)
         res.status(500).json({error:"Internal server error"});
     }
 }
