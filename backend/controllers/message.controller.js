@@ -1,5 +1,6 @@
 import Conversation from "../models/converstion.model.js";
 import Message from "../models/message.models.js";
+import { getReceiverSocketId } from "../socket/socket.js";
 
 export const sendMessage= async (req,res)=>{
    try{
@@ -26,9 +27,17 @@ export const sendMessage= async (req,res)=>{
             conversation.message.push(newMessage._id);
         }
 
+
         // await conversation.save()
         // await newMessage.save()
         await Promise.all([conversation.save(),newMessage.save()])
+
+        const recieverSOcketId=getReceiverSocketId(receiverId);
+        if(recieverSOcketId){
+            io.to(recieverSOcketId).emit("newMessage",newMessage)
+        }
+
+
         res.status(201).json(newMessage);
    }catch(error){
     console.log("error in sned message",error.message)

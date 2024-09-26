@@ -3,9 +3,11 @@ import useGetMessages from '../../hooks/useGetMessages'
 import Message from './Message';
 import Sender from './Sender.jsx'
 import Receiver from './Receiver.jsx'
+import useListenMessages from '../../hooks/useListenMessages.js';
 
 const Messages = () => {
   const {loading,messages}=useGetMessages();
+  useListenMessages();
   const lastmessageRef=useRef();
   useEffect(()=>{
     setTimeout(() => {
