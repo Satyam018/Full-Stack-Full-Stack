@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import useConversation from '../src/zustang/useConversation'
 import toast from 'react-hot-toast'
 
+
 const useSendMessage = () => {
   const [loading,setLoading]=useState(false)
-  const {message,setMessages,selectedConversation}=useConversation()
+  const {messages,setMessages,selectedConversation}=useConversation()
   const sendMessage=async(message)=>{
     setLoading(true)
     try{
@@ -20,7 +21,7 @@ const useSendMessage = () => {
         if(data.error){
             throw new Error(data.error)
         }
-        setMessages([...message,data])
+        setMessages([...messages,data])
     }catch(err){
         toast.error(err.message)
     }finally{

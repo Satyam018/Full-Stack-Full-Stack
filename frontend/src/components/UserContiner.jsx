@@ -5,7 +5,7 @@ import useGetConversation from '../../hooks/useGetConversation';
 const UserContiner = () => {
   const {loading,conversation}=useGetConversation();
   return (
-    <div className='overflow-auto flex flex-col rounded-lg py-2 sm:h-[350px] md:h-[390px]' style={{background:"#ffd700"}}>
+    <div className='overflow-auto flex flex-col rounded-lg py-2 sm:h-[350px] md:h-[450px]' style={{background:"#ffd700"}}>
       {conversation.map((conversation1,ind)=>(
         <User
          key={conversation1._id}
