@@ -9,7 +9,7 @@ const Message = ({ message }) => {
 
   const fromMe = message.senderId === authUser._id;
   const chatClassName = fromMe ? "chat-end" : "chat-start";
-	const bubbleBgColor = fromMe ? "bg-[#301934]" : "";
+	const bubbleBgColor = fromMe ? "bg-red-400" : "bg-red-200";
 
   const shakeClass = message.shouldShake ? "shake" : "";
   return (

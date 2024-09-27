@@ -17,7 +17,7 @@ const Messages = () => {
   return (
     <div className='h-[438px] overflow-auto background-white-200'>
       {!loading && messages.length===0 &&(
-        <p className='text-center'>Send a message to start the conversation</p>
+        <p className='text-center text-white mt-2'>Send a message to start the conversation</p>
       )}
     
       {console.log(messages.length)}

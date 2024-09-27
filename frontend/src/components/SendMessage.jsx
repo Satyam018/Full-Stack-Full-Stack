@@ -19,9 +19,9 @@ const SendMessage = () => {
         <form className='w-full relative' onSubmit={handleSubmit}>
         <input
 					type='text'
-					className='border text-sm rounded-lg block w-full py-2  px-2  text-white placeholder-white'
+					className='border text-sm rounded-lg block w-full py-2  px-2  text-white placeholder-white bg-red-300'
 					placeholder='Send a message'
-                    style={{background:"#301934",border:"none !important"}}
+                    style={{border:"none !important"}}
           value={message}
           onChange={(e)=>setMessage(e.target.value)}          
 				/>

@@ -12,7 +12,7 @@ const User = ({conversation,lastind}) => {
   return (
     <div>
     <div className={`w-full cursor-pointer py-[8px] px-2
-        ${isSelected? "bg-yellow-600":""}`}
+        ${isSelected? "bg-red-300":""}`}
         onClick={()=>setSelectedConversation(conversation)}>
     <div className='flex flex-row items-center'>
         <div className={`avatar ${isOnline ? "online":""}`}>

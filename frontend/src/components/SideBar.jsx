@@ -30,20 +30,19 @@ const SideBar = () => {
       <div className=" mb-4 md:w-[265px] sm:w-[220px] h-full flex flex-row">
         <form onSubmit={handleSubmit} className="flex flex-row gap-2">
           <label
-            className="input input-bordered flex items-center gap-2  w-[220px] rounded-2xl h-10"
-            style={{ background: "#ffd700" }}
+            className="input input-bordered flex items-center gap-2  w-[220px] rounded-2xl h-10 bg-red-600"
           >
             <CiSearch className="text-white" />
             <input
               type="text"
               className="grow rounded-md text-[12px] text-white placeholder:text-white"
-              placeholder="Daisy"
+              placeholder="Search Users"
               value={search}
               onChange={(e)=>setSearch(e.target.value)}
             />
           </label>
           <button 
-             type="submit" className="flex items-center justify-center rounded-full mt-[2px]" style={{ background: "#ffd700", width: "34px", height: "34px", padding: "0" }}>
+             type="submit" className="flex items-center justify-center rounded-full mt-[2px]  bg-red-600" style={{  width: "34px", height: "34px", padding: "0" }}>
   <IoIosSearch className="text-white" style={{ fontSize: "18px" }} />
 </button>
         </form>

@@ -6,7 +6,7 @@ const Logout = () => {
   return (
     <div className='py-2 px-1 cursor-pointer'>
       {!loading?(
-        <IoLogOutOutline style={{color:"#ffd700"}}
+        <IoLogOutOutline  className='text-red-600'
         onClick={logout}
       />
       ):(
