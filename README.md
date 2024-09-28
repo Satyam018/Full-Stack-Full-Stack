@@ -1,8 +1,10 @@
-This is a real time chat application that allow authentciateb users to chat with each other. 
-This is a full stack project and main features included are:
+This is a real-time chat application that allows authenticated users to chat with each other. 
+
+
+This is a full stack project and the main features included are:
  User Login and Signup
  Real time chatting 
- check the status of uers.
+ check the status of users
 
  The technology included are:
  React.js
