@@ -2,15 +2,23 @@ This is a real-time chat application that allows authenticated users to chat wit
 
 
 This is a full stack project and the main features included are:
+
  User Login and Signup
+ 
  Real time chatting 
+ 
  check the status of users
 
- The technology included are:
+ The Project is developed using the MERN stack. The technology included are:
+ 
  React.js
+ 
  Node.js
+ 
  Socket.io
+ 
  MongoDB
+ 
  Express
 
  ![Capture](https://github.com/user-attachments/assets/4eda2a3f-f455-4b09-a2c9-c7152a81b492)
